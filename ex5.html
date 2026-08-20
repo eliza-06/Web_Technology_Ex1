@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Serenity Yoga Studio</title>
+
+    <style>
+
+        body {
+            font-family: Arial;
+            background-color: #f5f0e6;
+            text-align: center;
+            margin: 0;
+        }
+
+        header {
+            background-color: #8b6f47;
+            color: white;
+            padding: 20px;
+        }
+
+        .box {
+            background-color: white;
+            width: 400px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 15px;
+        }
+
+        button {
+            background-color: #8b6f47;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #6f5637;
+        }
+
+        input, select {
+            padding: 8px;
+            margin: 8px;
+        }
+
+        #message {
+            color: #8b6f47;
+            font-weight: bold;
+        }
+
+        footer {
+            background-color: #8b6f47;
+            color: white;
+            padding: 10px;
+        }
+
+    </style>
+
+</head>
+
+
+<body onload="welcome()">
+
+
+    <!-- Header -->
+
+    <header>
+
+        <h1 id="title">Serenity Yoga Studio</h1>
+
+        <p>Peaceful Mind • Healthy Body</p>
+
+    </header>
+
+
+    <!-- DOM Example -->
+
+    <div class="box">
+
+        <h2>Welcome to Yoga</h2>
+
+        <p id="message">
+            Start your journey towards a healthier life.
+        </p>
+
+        <button onclick="changeMessage()">
+            Join Yoga
+        </button>
+
+    </div>
+
+
+    <!-- Yoga Class Selection -->
+
+    <div class="box">
+
+        <h2>Choose Your Class</h2>
+
+        <select id="yogaClass" onchange="showClass()">
+
+            <option>Select a class</option>
+
+            <option>Hatha Yoga</option>
+
+            <option>Power Yoga</option>
+
+            <option>Meditation</option>
+
+        </select>
+
+        <p id="selected"></p>
+
+    </div>
+
+
+    <!-- Keyboard Event -->
+
+    <div class="box">
+
+        <h2>Enter Your Name</h2>
+
+        <input type="text"
+               id="name"
+               placeholder="Type your name"
+               onkeyup="showName()">
+
+        <p id="nameOutput"></p>
+
+    </div>
+
+
+    <!-- Mouse Events -->
+
+    <div class="box"
+         onmouseover="mouseIn()"
+         onmouseout="mouseOut()">
+
+        <h2>Yoga Tip</h2>
+
+        <p id="tip">
+            Move your mouse over this box.
+        </p>
+
+    </div>
+
+
+    <!-- Footer -->
+
+    <footer>
+
+        <p>© 2026 Serenity Yoga Studio</p>
+
+    </footer>
+
+
+    <script>
+
+
+        // onload event
+
+        function welcome() {
+
+            document.getElementById("message").innerHTML =
+                "Welcome! Let's begin your yoga journey.";
+
+        }
+
+
+        // onclick event
+        // Finding element by ID
+
+        function changeMessage() {
+
+            document.getElementById("message").innerHTML =
+                "Great choice! Yoga brings peace and strength.";
+
+        }
+
+
+        // onchange event
+
+        function showClass() {
+
+            var yoga =
+                document.getElementById("yogaClass").value;
+
+            document.getElementById("selected").innerHTML =
+                "You selected: " + yoga;
+
+        }
+
+
+        // onkeyup event
+
+        function showName() {
+
+            var name =
+                document.getElementById("name").value;
+
+            document.getElementById("nameOutput").innerHTML =
+                "Hello, " + name + "!";
+
+        }
+
+
+        // onmouseover event
+
+        function mouseIn() {
+
+            document.getElementById("tip").innerHTML =
+                "Tip: Breathe slowly and stay relaxed.";
+
+        }
+
+
+        // onmouseout event
+
+        function mouseOut() {
+
+            document.getElementById("tip").innerHTML =
+                "Move your mouse over this box.";
+
+        }
+
+
+    </script>
+
+</body>
+
+</html>
