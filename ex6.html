@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>Serenity Yoga</title>
+
+    <style>
+
+        body {
+            margin: 0;
+            font-family: Arial;
+            background-color: #eee7f7;
+            text-align: center;
+        }
+
+        header {
+            background-color: #5e4b8b;
+            color: white;
+            padding: 25px;
+        }
+
+        header h1 {
+            margin: 5px;
+            font-size: 35px;
+        }
+
+        .card {
+            background-color: white;
+            width: 600px;
+            margin: 25px auto;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 3px 10px #bbb;
+        }
+
+        h2 {
+            color: #5e4b8b;
+        }
+
+        button {
+            background-color: #5e4b8b;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #44366b;
+        }
+
+        #time {
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        #quote {
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        #para {
+            font-size: 20px;
+        }
+
+        #container {
+            width: 500px;
+            height: 80px;
+            background-color: #eee7f7;
+            margin: auto;
+            position: relative;
+        }
+
+        #ball {
+            width: 60px;
+            height: 60px;
+            background-color: #a88bc7;
+            border-radius: 50%;
+            position: absolute;
+            left: 0px;
+            top: 10px;
+        }
+
+        footer {
+            background-color: #5e4b8b;
+            color: white;
+            padding: 12px;
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- HEADER -->
+
+<header>
+
+    <h1 id="title">Serenity Yoga</h1>
+
+    <p>Find Your Balance • Find Your Peace</p>
+
+    <p id="time"></p>
+
+</header>
+
+
+<!-- FIRST CARD -->
+
+<div class="card">
+
+    <h2>Daily Yoga</h2>
+
+    <p id="quote">
+        "Yoga is the journey of the self, through the self."
+    </p>
+
+    <button onclick="changeStyle()">
+        Change Style
+    </button>
+
+
+    <h2>Yoga Tip</h2>
+
+    <p id="tip">
+        Take a deep breath and relax your body.
+    </p>
+
+    <button onclick="hideTip()">Hide</button>
+
+    <button onclick="showTip()">Show</button>
+
+
+    <h2>Try This!</h2>
+
+    <p id="para"
+       onmouseover="increaseSize()"
+       onmouseout="decreaseSize()">
+
+        Move your mouse over this sentence.
+
+    </p>
+
+</div>
+
+
+<!-- SECOND CARD -->
+
+<div class="card">
+
+    <h2>Yoga Ball Animation</h2>
+
+    <div id="container">
+
+        <div id="ball"></div>
+
+    </div>
+
+    <button onclick="startMove()">Start</button>
+
+    <button onclick="stopMove()">Stop</button>
+
+
+    <h2>Today's Class</h2>
+
+    <p id="class"></p>
+
+
+    <h2>Student Details</h2>
+
+    <p id="students"></p>
+
+</div>
+
+
+<footer>
+
+    Serenity Yoga Studio © 2026
+
+</footer>
+
+
+
+<script>
+
+
+// DIGITAL CLOCK
+
+function displayTime() {
+
+    var d = new Date();
+
+    var hour = d.getHours();
+
+    var minute = d.getMinutes();
+
+    var second = d.getSeconds();
+
+    document.getElementById("time").innerHTML =
+        hour + ":" + minute + ":" + second;
+
+}
+
+setInterval(displayTime, 1000);
+
+
+// CHANGE STYLE
+
+function changeStyle() {
+
+    var text = document.getElementById("quote");
+
+    text.style.color = "#5e4b8b";
+
+    text.style.fontSize = "28px";
+
+    text.style.backgroundColor = "#eee7f7";
+
+}
+
+
+// SHOW AND HIDE
+
+function hideTip() {
+
+    document.getElementById("tip").style.display = "none";
+
+}
+
+function showTip() {
+
+    document.getElementById("tip").style.display = "block";
+
+}
+
+
+// MOUSE EVENTS
+
+function increaseSize() {
+
+    document.getElementById("para").style.fontSize = "30px";
+
+}
+
+function decreaseSize() {
+
+    document.getElementById("para").style.fontSize = "20px";
+
+}
+
+
+// ANIMATION
+
+var position = 0;
+
+var animation;
+
+
+function startMove() {
+
+    animation = setInterval(moveBall, 10);
+
+}
+
+
+function moveBall() {
+
+    if (position >= 430) {
+
+        clearInterval(animation);
+
+    }
+    else {
+
+        position++;
+
+        document.getElementById("ball").style.left =
+            position + "px";
+
+    }
+
+}
+
+
+function stopMove() {
+
+    clearInterval(animation);
+
+}
+
+
+// SET TIMEOUT
+
+setTimeout(function() {
+
+    document.getElementById("title").innerHTML =
+        "Welcome to Serenity Yoga!";
+
+}, 3000);
+
+
+// CLASS AND OBJECT
+
+class Yoga {
+
+    constructor(name) {
+
+        this.name = name;
+
+    }
+
+    showClass() {
+
+        return "Today's class: " + this.name;
+
+    }
+
+}
+
+var yogaClass = new Yoga("Meditation");
+
+document.getElementById("class").innerHTML =
+    yogaClass.showClass();
+
+
+// ARRAY OF OBJECTS
+
+var student = [
+
+    {
+        name: "Anu",
+        r_num: "UR24CS101",
+        dob: 1998
+    },
+
+    {
+        name: "Riya",
+        r_num: "UR24CS102",
+        dob: 2002
+    }
+
+];
+
+
+var result = "";
+
+
+for (var i = 0; i < student.length; i++) {
+
+    result +=
+        student[i].name +
+        "'s Register Number is " +
+        student[i].r_num;
+
+    if (student[i].dob < 2000) {
+
+        result += " - Born before 2000";
+
+    }
+    else {
+
+        result += " - Born after 2000";
+
+    }
+
+    result += "<br><br>";
+
+}
+
+
+document.getElementById("students").innerHTML = result;
+
+
+</script>
+
+
+</body>
+
+</html>
