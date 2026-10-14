@@ -1,0 +1,158 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Serenity Yoga Studio</title>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin: 0;
+            background-color: #f2edf8;
+        }
+
+        header {
+            background-color: #604780;
+            color: white;
+            padding: 25px;
+        }
+
+        .content {
+            background: white;
+            width: 450px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        h2 {
+            color: #604780;
+        }
+
+        input, select {
+            padding: 9px;
+            margin: 8px;
+        }
+
+        button {
+            background-color: #604780;
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        #result {
+            color: #604780;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        footer {
+            background-color: #604780;
+            color: white;
+            padding: 12px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Serenity Yoga Studio</h1>
+        <p>Find Your Balance, Find Your Peace</p>
+    </header>
+
+    <div class="content">
+        <h2>Yoga Class Calculator</h2>
+
+        <p>Choose your class and number of sessions.</p>
+
+        <select id="yoga">
+            <option value="200">Hatha Yoga - ₹200</option>
+            <option value="300">Power Yoga - ₹300</option>
+            <option value="150">Meditation - ₹150</option>
+        </select>
+
+        <br>
+
+        Number of sessions:
+        <input type="number" id="sessions" min="1" value="1">
+
+        <br>
+
+        <button id="calculate">Calculate Fee</button>
+        <button id="reset">Reset</button>
+
+        <p id="result"></p>
+
+        <hr>
+
+        <h2 id="tip">Yoga Tip</h2>
+
+        <p id="message">
+            Breathe deeply and relax your mind.
+        </p>
+
+        <button id="hide">Hide Tip</button>
+        <button id="show">Show Tip</button>
+        <button id="style">Change Style</button>
+    </div>
+
+    <footer>
+        Serenity Yoga Studio © 2026
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+
+            // Calculate class fee
+            $("#calculate").click(function() {
+
+                let fee = Number($("#yoga").val());
+                let sessions = Number($("#sessions").val());
+
+                if (sessions < 1 || !Number.isInteger(sessions)) {
+                    alert("Enter a valid number of sessions.");
+                } else {
+                    let total = fee * sessions;
+                    $("#result").html("Total Fee: ₹" + total);
+                }
+
+            });
+
+            // Reset values
+            $("#reset").click(function() {
+                $("#sessions").val(1);
+                $("#result").html("");
+            });
+
+            // Hide yoga tip
+            $("#hide").click(function() {
+                $("#message").hide();
+            });
+
+            // Show yoga tip
+            $("#show").click(function() {
+                $("#message").show();
+            });
+
+            // Change CSS style
+            $("#style").click(function() {
+                $("#message").css({
+                    "color": "#604780",
+                    "font-size": "22px",
+                    "font-weight": "bold"
+                });
+            });
+
+        });
+    </script>
+
+</body>
+</html>
